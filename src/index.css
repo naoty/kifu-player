@@ -17,4 +17,5 @@ main {
 .content {
   grid-column-start: 2;
   grid-row-start: 3;
+  text-align: center;
 }
