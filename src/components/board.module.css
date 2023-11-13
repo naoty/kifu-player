@@ -10,18 +10,6 @@
   line-height: 2;
 }
 
-.piece {
-  display: inline-block;
-  font-family: serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.piece__white {
-  transform: rotate(0.5turn);
-}
-
 .row_number {
   padding-left: 0.5rem;
   line-height: 3;

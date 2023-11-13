@@ -1,4 +1,7 @@
 import classNames from './board.module.css';
+import Piece from './piece';
+import { PieceOwner } from './piece-owner';
+import { PieceType } from './piece-type';
 
 export default function Board() {
   return (
@@ -17,38 +20,38 @@ export default function Board() {
         </tr>
         <tr>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>香</span>
+            <Piece type={PieceType.Lance} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>桂</span>
+            <Piece type={PieceType.Knight} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>銀</span>
+            <Piece type={PieceType.SilverGeneral} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>金</span>
+            <Piece type={PieceType.GoldGeneral} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>玉</span>
+            <Piece type={PieceType.AnotherKing} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>金</span>
+            <Piece type={PieceType.GoldGeneral} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>銀</span>
+            <Piece type={PieceType.SilverGeneral} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>桂</span>
+            <Piece type={PieceType.Knight} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>香</span>
+            <Piece type={PieceType.Lance} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.row_number}`}>一</td>
         </tr>
         <tr>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>飛</span>
+            <Piece type={PieceType.Rook} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}></td>
@@ -56,38 +59,38 @@ export default function Board() {
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>角</span>
+            <Piece type={PieceType.Bishop} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.row_number}`}>二</td>
         </tr>
         <tr>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece} ${classNames.piece__white}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.White} />
           </td>
           <td className={`${classNames.row_number}`}>三</td>
         </tr>
@@ -129,38 +132,38 @@ export default function Board() {
         </tr>
         <tr>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>歩</span>
+            <Piece type={PieceType.Pawn} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.row_number}`}>七</td>
         </tr>
         <tr>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>飛</span>
+            <Piece type={PieceType.Rook} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}></td>
@@ -168,38 +171,38 @@ export default function Board() {
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>角</span>
+            <Piece type={PieceType.Bishop} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}></td>
           <td className={`${classNames.row_number}`}>八</td>
         </tr>
         <tr>
-          <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>香</span>
+        <td className={`${classNames.square}`}>
+            <Piece type={PieceType.Lance} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>桂</span>
+            <Piece type={PieceType.Knight} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>銀</span>
+            <Piece type={PieceType.SilverGeneral} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>金</span>
+            <Piece type={PieceType.GoldGeneral} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>王</span>
+            <Piece type={PieceType.King} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>金</span>
+            <Piece type={PieceType.GoldGeneral} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>銀</span>
+            <Piece type={PieceType.SilverGeneral} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>桂</span>
+            <Piece type={PieceType.Knight} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.square}`}>
-            <span className={`${classNames.piece}`}>香</span>
+            <Piece type={PieceType.Lance} owner={PieceOwner.Black} />
           </td>
           <td className={`${classNames.row_number}`}>九</td>
         </tr>

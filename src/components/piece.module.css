@@ -1,0 +1,11 @@
+.piece {
+  display: inline-block;
+  font-family: serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.white {
+  transform: rotate(0.5turn);
+}
