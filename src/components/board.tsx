@@ -49,7 +49,7 @@ const initialPositions = new Map([
   [29, { type: PieceType.Knight, owner: PieceOwner.Black }],
   [39, { type: PieceType.SilverGeneral, owner: PieceOwner.Black }],
   [49, { type: PieceType.GoldGeneral, owner: PieceOwner.Black }],
-  [59, { type: PieceType.AnotherKing, owner: PieceOwner.Black }],
+  [59, { type: PieceType.King, owner: PieceOwner.Black }],
   [69, { type: PieceType.GoldGeneral, owner: PieceOwner.Black }],
   [79, { type: PieceType.SilverGeneral, owner: PieceOwner.Black }],
   [89, { type: PieceType.Knight, owner: PieceOwner.Black }],
@@ -70,7 +70,7 @@ export default function Board() {
   }
 
   const pieceAt = (row: number, column: number) => {
-    const position = row + column * 10;
+    const position = column * 10 + row;
     const props = positions.get(position)
     if (props) {
       return <Piece
@@ -110,9 +110,9 @@ export default function Board() {
   const squares = []
   for (let row = 0; row <= 9; row++) {
     const rows = [];
-    for (let column = 1; column <= 9; column++) {
+    for (let column = 9; column > 0; column--) {
       if (row === 0) {
-        rows.push(<ColumnNumber value={`${10 - column}`} />)
+        rows.push(<ColumnNumber value={`${column}`} />)
       } else {
         const position = column * 10 + row
         rows.push(
