@@ -3,9 +3,21 @@ import classNames from './piece.module.css';
 import { PieceOwner } from "./piece-owner";
 import { PieceType } from "./piece-type";
 
-export default function Piece({ type, owner }: { type: PieceType, owner: PieceOwner }) {
+export type PieceProp = {
+  type: PieceType,
+  owner: PieceOwner,
+  onClick?: () => void,
+}
+
+export default function Piece({ type, owner, onClick }: PieceProp) {
   return (
-    <span className={clsx(classNames.piece, owner == PieceOwner.White && classNames.white)}>
+    <span
+      className={clsx(
+        classNames.piece,
+        owner == PieceOwner.White && classNames.white,
+      )}
+      onClick={onClick}
+    >
       {type}
     </span>
   )
