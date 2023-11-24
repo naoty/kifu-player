@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import classNames from './piece.module.css';
 import { Color } from "../color";
-import { PieceType } from "./piece-type";
+import { PieceType } from "../piece-type";
 
 export type PieceProp = {
   type: PieceType,

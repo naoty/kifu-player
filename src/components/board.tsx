@@ -4,7 +4,7 @@ import RowNumber from './row-number';
 import ColumnNumber from './column-number';
 import Piece from './piece';
 import { Color } from '../color';
-import { PieceType } from './piece-type';
+import { PieceType } from '../piece-type';
 import { useState } from 'react';
 
 type PieceProps = {
