@@ -70,7 +70,7 @@ export default function Board() {
   }
 
   const squares = []
-  
+
   for (let row = 0; row <= 9; row++) {
     const rows = [];
     for (let column = 9; column > 0; column--) {
@@ -81,7 +81,7 @@ export default function Board() {
       }
     }
     squares.push(
-      <tr>
+      <tr key={row}>
         {...rows}
         {row > 0 && <RowNumber value={numberToKanji(row)} />}
       </tr>
