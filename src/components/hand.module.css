@@ -1,0 +1,12 @@
+.hand {
+  display: flex;
+  width: 3rem;
+}
+
+.black_hand {
+  flex-direction: column-reverse;
+}
+
+.white_hand {
+  flex-direction: column;
+}

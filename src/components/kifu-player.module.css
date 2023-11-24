@@ -1,0 +1,4 @@
+.kifu_player {
+  display: inline-flex;
+  flex-direction: row;
+}
