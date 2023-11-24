@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import classNames from './board.module.css';
 import Square from './square';
 import RowNumber from './row-number';
@@ -5,7 +6,7 @@ import ColumnNumber from './column-number';
 import Piece from './piece';
 import { Color } from '../color';
 import { PieceType } from '../piece-type';
-import { useState } from 'react';
+import { numberToKanji } from '../kanji-number';
 
 type PieceProps = {
   type: PieceType,
@@ -82,31 +83,6 @@ export default function Board() {
     return null
   }
 
-  const kanjiNumber = (num: number) => {
-    switch (num) {
-      case 1:
-        return '一'
-      case 2:
-        return '二'
-      case 3:
-        return '三'
-      case 4:
-        return '四'
-      case 5:
-        return '五'
-      case 6:
-        return '六'
-      case 7:
-        return '七'
-      case 8:
-        return '八'
-      case 9:
-        return '九'
-      default:
-        return ''
-    }
-  }
-
   const squares = []
   for (let row = 0; row <= 9; row++) {
     const rows = [];
@@ -125,7 +101,7 @@ export default function Board() {
     squares.push(
       <tr>
         {...rows}
-        {row > 0 && <RowNumber value={kanjiNumber(row)} />}
+        {row > 0 && <RowNumber value={numberToKanji(row)} />}
       </tr>
     )
   }
