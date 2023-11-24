@@ -6,17 +6,15 @@ import { PieceType } from "../piece-type";
 export type PieceProp = {
   type: PieceType,
   color: Color,
-  onClick?: () => void,
 }
 
-export default function Piece({ type, color: color, onClick }: PieceProp) {
+export default function Piece({ type, color: color }: PieceProp) {
   return (
     <span
       className={clsx(
         classNames.piece,
         color == Color.White && classNames.white,
       )}
-      onClick={onClick}
     >
       {type}
     </span>

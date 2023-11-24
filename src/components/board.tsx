@@ -60,42 +60,24 @@ const initialPositions = new Map([
 export default function Board() {
   const [positions, _] = useState<Positions>(initialPositions)
 
-  const [selectedPosition, setSelectedPosition] = useState<number | null>(null)
-
-  const toggleSelectedPosition = (position: number) => {
-    if (selectedPosition === position) {
-      setSelectedPosition(null)
-    } else {
-      setSelectedPosition(position)
-    }
-  }
-
   const pieceAt = (row: number, column: number) => {
     const position = column * 10 + row;
     const props = positions.get(position)
     if (props) {
-      return <Piece
-        type={props.type}
-        color={props.color}
-        onClick={() => toggleSelectedPosition(position)}
-      />
+      return <Piece type={props.type} color={props.color} />
     }
     return null
   }
 
   const squares = []
+  
   for (let row = 0; row <= 9; row++) {
     const rows = [];
     for (let column = 9; column > 0; column--) {
       if (row === 0) {
         rows.push(<ColumnNumber value={`${column}`} />)
       } else {
-        const position = column * 10 + row
-        rows.push(
-          <Square selected={selectedPosition === position}>
-            {pieceAt(row, column)}
-          </Square>
-        )
+        rows.push(<Square>{pieceAt(row, column)}</Square>)
       }
     }
     squares.push(

@@ -1,19 +1,13 @@
 import type { ReactNode } from "react";
-import clsx from "clsx";
 import classNames from './square.module.css'
 
 type Props = {
   children?: ReactNode,
-  selected?: boolean,
 }
 
-export default function Square({ children, selected = false }: Props) {
+export default function Square({ children }: Props) {
   return (
-    <td className={clsx(
-      classNames.square,
-      selected && classNames.selected,
-
-    )}>
+    <td className={`${classNames.square}`}>
       {children}
     </td>
   )
