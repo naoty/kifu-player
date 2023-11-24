@@ -3,89 +3,47 @@ import classNames from './board.module.css';
 import Square from './square';
 import RowNumber from './row-number';
 import ColumnNumber from './column-number';
-import Piece from './piece';
-import { Color } from '../color';
-import { PieceType } from '../piece-type';
+import PieceComponent from './piece';
+import type { Position } from '../position';
+import Piece, { Type, Color } from '../piece';
 import { numberToKanji } from '../kanji-number';
 
-type PieceProps = {
-  type: PieceType,
-  color: Color,
-}
-type Positions = Map<number, PieceProps>
-
-const initialPositions = new Map([
-  [11, { type: PieceType.Lance, color: Color.White }],
-  [21, { type: PieceType.Knight, color: Color.White }],
-  [31, { type: PieceType.SilverGeneral, color: Color.White }],
-  [41, { type: PieceType.GoldGeneral, color: Color.White }],
-  [51, { type: PieceType.AnotherKing, color: Color.White }],
-  [61, { type: PieceType.GoldGeneral, color: Color.White }],
-  [71, { type: PieceType.SilverGeneral, color: Color.White }],
-  [81, { type: PieceType.Knight, color: Color.White }],
-  [91, { type: PieceType.Lance, color: Color.White }],
-  [22, { type: PieceType.Bishop, color: Color.White }],
-  [82, { type: PieceType.Rook, color: Color.White }],
-  [13, { type: PieceType.Pawn, color: Color.White }],
-  [23, { type: PieceType.Pawn, color: Color.White }],
-  [33, { type: PieceType.Pawn, color: Color.White }],
-  [43, { type: PieceType.Pawn, color: Color.White }],
-  [53, { type: PieceType.Pawn, color: Color.White }],
-  [63, { type: PieceType.Pawn, color: Color.White }],
-  [73, { type: PieceType.Pawn, color: Color.White }],
-  [83, { type: PieceType.Pawn, color: Color.White }],
-  [93, { type: PieceType.Pawn, color: Color.White }],
-  [17, { type: PieceType.Pawn, color: Color.Black }],
-  [27, { type: PieceType.Pawn, color: Color.Black }],
-  [37, { type: PieceType.Pawn, color: Color.Black }],
-  [47, { type: PieceType.Pawn, color: Color.Black }],
-  [57, { type: PieceType.Pawn, color: Color.Black }],
-  [67, { type: PieceType.Pawn, color: Color.Black }],
-  [77, { type: PieceType.Pawn, color: Color.Black }],
-  [87, { type: PieceType.Pawn, color: Color.Black }],
-  [97, { type: PieceType.Pawn, color: Color.Black }],
-  [28, { type: PieceType.Rook, color: Color.Black }],
-  [88, { type: PieceType.Bishop, color: Color.Black }],
-  [19, { type: PieceType.Lance, color: Color.Black }],
-  [29, { type: PieceType.Knight, color: Color.Black }],
-  [39, { type: PieceType.SilverGeneral, color: Color.Black }],
-  [49, { type: PieceType.GoldGeneral, color: Color.Black }],
-  [59, { type: PieceType.King, color: Color.Black }],
-  [69, { type: PieceType.GoldGeneral, color: Color.Black }],
-  [79, { type: PieceType.SilverGeneral, color: Color.Black }],
-  [89, { type: PieceType.Knight, color: Color.Black }],
-  [99, { type: PieceType.Lance, color: Color.Black }],
-])
+const initialPosition: Position = [
+  [new Piece(Type.Lance, Color.White), new Piece(Type.Knight, Color.White), new Piece(Type.SilverGeneral, Color.White), new Piece(Type.GoldGeneral, Color.White), new Piece(Type.King, Color.White), new Piece(Type.GoldGeneral, Color.White), new Piece(Type.SilverGeneral, Color.White), new Piece(Type.Knight, Color.White), new Piece(Type.Lance, Color.White)],
+  [null, new Piece(Type.Rook, Color.White), null, null, null, null, null, new Piece(Type.Bishop, Color.White), null],
+  Array(9).fill(new Piece(Type.Pawn, Color.White)),
+  Array(9).fill(null),
+  Array(9).fill(null),
+  Array(9).fill(null),
+  Array(9).fill(new Piece(Type.Pawn, Color.Black)),
+  [null, new Piece(Type.Bishop, Color.Black), null, null, null, null, null, new Piece(Type.Rook, Color.Black), null],
+  [new Piece(Type.Lance, Color.Black), new Piece(Type.Knight, Color.Black), new Piece(Type.SilverGeneral, Color.Black), new Piece(Type.GoldGeneral, Color.Black), new Piece(Type.King, Color.Black), new Piece(Type.GoldGeneral, Color.Black), new Piece(Type.SilverGeneral, Color.Black), new Piece(Type.Knight, Color.Black), new Piece(Type.Lance, Color.Black)],
+]
 
 export default function Board() {
-  const [positions, _] = useState<Positions>(initialPositions)
-
-  const pieceAt = (row: number, column: number) => {
-    const position = column * 10 + row;
-    const props = positions.get(position)
-    if (props) {
-      return <Piece type={props.type} color={props.color} />
-    }
-    return null
-  }
+  const [position, _] = useState(initialPosition)
 
   const squares = []
 
-  for (let row = 0; row <= 9; row++) {
-    const rows = [];
-    for (let column = 9; column > 0; column--) {
-      if (row === 0) {
-        rows.push(<ColumnNumber value={`${column}`} />)
+  const columnNumberRow = []
+  for (let column = 9; column >= 1; column--) {
+    columnNumberRow.push(<ColumnNumber key={column} value={`${column}`} />)
+  }
+  squares.push(<tr key={0}>{...columnNumberRow}</tr>)
+
+  for (let row = 0; row <= 8; row++) {
+    const squareRow = []
+    for (let column = 0; column <= 8; column++) {
+      const key = (9 - column) * 10 + (row + 1)
+      const piece = position[row][column]
+      if (piece) {
+        squareRow.push(<Square key={key}><PieceComponent piece={piece} /></Square>)
       } else {
-        rows.push(<Square>{pieceAt(row, column)}</Square>)
+        squareRow.push(<Square key={key}></Square>)
       }
     }
-    squares.push(
-      <tr key={row}>
-        {...rows}
-        {row > 0 && <RowNumber value={numberToKanji(row)} />}
-      </tr>
-    )
+    squareRow.push(<RowNumber key={row + 1} value={numberToKanji(row + 1)} />)
+    squares.push(<tr key={row + 1}>{...squareRow}</tr>)
   }
 
   return (

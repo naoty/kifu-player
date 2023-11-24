@@ -1,22 +1,16 @@
 import clsx from 'clsx';
 import classNames from './piece.module.css';
-import { Color } from "../color";
-import { PieceType } from "../piece-type";
+import PieceData, { Color } from '../piece';
 
-export type PieceProp = {
-  type: PieceType,
-  color: Color,
-}
-
-export default function Piece({ type, color: color }: PieceProp) {
+export default function Piece({ piece }: { piece: PieceData }) {
   return (
     <span
       className={clsx(
         classNames.piece,
-        color == Color.White && classNames.white,
+        piece.color == Color.White && classNames.white,
       )}
     >
-      {type}
+      {piece.toString()}
     </span>
   )
 }
