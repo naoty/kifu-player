@@ -1,20 +1,20 @@
 import clsx from 'clsx';
 import classNames from './piece.module.css';
-import { PieceOwner } from "./piece-owner";
+import { Color } from "../color";
 import { PieceType } from "./piece-type";
 
 export type PieceProp = {
   type: PieceType,
-  owner: PieceOwner,
+  color: Color,
   onClick?: () => void,
 }
 
-export default function Piece({ type, owner, onClick }: PieceProp) {
+export default function Piece({ type, color: color, onClick }: PieceProp) {
   return (
     <span
       className={clsx(
         classNames.piece,
-        owner == PieceOwner.White && classNames.white,
+        color == Color.White && classNames.white,
       )}
       onClick={onClick}
     >

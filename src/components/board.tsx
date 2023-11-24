@@ -3,57 +3,57 @@ import Square from './square';
 import RowNumber from './row-number';
 import ColumnNumber from './column-number';
 import Piece from './piece';
-import { PieceOwner } from './piece-owner';
+import { Color } from '../color';
 import { PieceType } from './piece-type';
 import { useState } from 'react';
 
 type PieceProps = {
   type: PieceType,
-  owner: PieceOwner,
+  color: Color,
 }
 type Positions = Map<number, PieceProps>
 
 const initialPositions = new Map([
-  [11, { type: PieceType.Lance, owner: PieceOwner.White }],
-  [21, { type: PieceType.Knight, owner: PieceOwner.White }],
-  [31, { type: PieceType.SilverGeneral, owner: PieceOwner.White }],
-  [41, { type: PieceType.GoldGeneral, owner: PieceOwner.White }],
-  [51, { type: PieceType.AnotherKing, owner: PieceOwner.White }],
-  [61, { type: PieceType.GoldGeneral, owner: PieceOwner.White }],
-  [71, { type: PieceType.SilverGeneral, owner: PieceOwner.White }],
-  [81, { type: PieceType.Knight, owner: PieceOwner.White }],
-  [91, { type: PieceType.Lance, owner: PieceOwner.White }],
-  [22, { type: PieceType.Bishop, owner: PieceOwner.White }],
-  [82, { type: PieceType.Rook, owner: PieceOwner.White }],
-  [13, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [23, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [33, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [43, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [53, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [63, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [73, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [83, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [93, { type: PieceType.Pawn, owner: PieceOwner.White }],
-  [17, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [27, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [37, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [47, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [57, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [67, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [77, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [87, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [97, { type: PieceType.Pawn, owner: PieceOwner.Black }],
-  [28, { type: PieceType.Rook, owner: PieceOwner.Black }],
-  [88, { type: PieceType.Bishop, owner: PieceOwner.Black }],
-  [19, { type: PieceType.Lance, owner: PieceOwner.Black }],
-  [29, { type: PieceType.Knight, owner: PieceOwner.Black }],
-  [39, { type: PieceType.SilverGeneral, owner: PieceOwner.Black }],
-  [49, { type: PieceType.GoldGeneral, owner: PieceOwner.Black }],
-  [59, { type: PieceType.King, owner: PieceOwner.Black }],
-  [69, { type: PieceType.GoldGeneral, owner: PieceOwner.Black }],
-  [79, { type: PieceType.SilverGeneral, owner: PieceOwner.Black }],
-  [89, { type: PieceType.Knight, owner: PieceOwner.Black }],
-  [99, { type: PieceType.Lance, owner: PieceOwner.Black }],
+  [11, { type: PieceType.Lance, color: Color.White }],
+  [21, { type: PieceType.Knight, color: Color.White }],
+  [31, { type: PieceType.SilverGeneral, color: Color.White }],
+  [41, { type: PieceType.GoldGeneral, color: Color.White }],
+  [51, { type: PieceType.AnotherKing, color: Color.White }],
+  [61, { type: PieceType.GoldGeneral, color: Color.White }],
+  [71, { type: PieceType.SilverGeneral, color: Color.White }],
+  [81, { type: PieceType.Knight, color: Color.White }],
+  [91, { type: PieceType.Lance, color: Color.White }],
+  [22, { type: PieceType.Bishop, color: Color.White }],
+  [82, { type: PieceType.Rook, color: Color.White }],
+  [13, { type: PieceType.Pawn, color: Color.White }],
+  [23, { type: PieceType.Pawn, color: Color.White }],
+  [33, { type: PieceType.Pawn, color: Color.White }],
+  [43, { type: PieceType.Pawn, color: Color.White }],
+  [53, { type: PieceType.Pawn, color: Color.White }],
+  [63, { type: PieceType.Pawn, color: Color.White }],
+  [73, { type: PieceType.Pawn, color: Color.White }],
+  [83, { type: PieceType.Pawn, color: Color.White }],
+  [93, { type: PieceType.Pawn, color: Color.White }],
+  [17, { type: PieceType.Pawn, color: Color.Black }],
+  [27, { type: PieceType.Pawn, color: Color.Black }],
+  [37, { type: PieceType.Pawn, color: Color.Black }],
+  [47, { type: PieceType.Pawn, color: Color.Black }],
+  [57, { type: PieceType.Pawn, color: Color.Black }],
+  [67, { type: PieceType.Pawn, color: Color.Black }],
+  [77, { type: PieceType.Pawn, color: Color.Black }],
+  [87, { type: PieceType.Pawn, color: Color.Black }],
+  [97, { type: PieceType.Pawn, color: Color.Black }],
+  [28, { type: PieceType.Rook, color: Color.Black }],
+  [88, { type: PieceType.Bishop, color: Color.Black }],
+  [19, { type: PieceType.Lance, color: Color.Black }],
+  [29, { type: PieceType.Knight, color: Color.Black }],
+  [39, { type: PieceType.SilverGeneral, color: Color.Black }],
+  [49, { type: PieceType.GoldGeneral, color: Color.Black }],
+  [59, { type: PieceType.King, color: Color.Black }],
+  [69, { type: PieceType.GoldGeneral, color: Color.Black }],
+  [79, { type: PieceType.SilverGeneral, color: Color.Black }],
+  [89, { type: PieceType.Knight, color: Color.Black }],
+  [99, { type: PieceType.Lance, color: Color.Black }],
 ])
 
 export default function Board() {
@@ -75,7 +75,7 @@ export default function Board() {
     if (props) {
       return <Piece
         type={props.type}
-        owner={props.owner}
+        color={props.color}
         onClick={() => toggleSelectedPosition(position)}
       />
     }
