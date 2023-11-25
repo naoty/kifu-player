@@ -6,7 +6,7 @@ import clsx from "clsx";
 export default function Hand({ pieces, color }: { pieces: Piece[], color: Color }) {
   const sortedPieces = [...pieces].sort((a, b) => b.orderInHand - a.orderInHand)
   const pieceComponents = sortedPieces.map((piece, i) => (
-    <PieceComponent key={i} piece={piece} />
+    <PieceComponent key={i} piece={piece} hand={true} />
   ))
 
   return (

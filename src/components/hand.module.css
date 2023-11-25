@@ -1,6 +1,7 @@
 .hand {
   display: flex;
   width: 3rem;
+  margin-top: 1.5rem;
 }
 
 .black_hand {

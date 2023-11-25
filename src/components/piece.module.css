@@ -10,3 +10,9 @@
 .white {
   transform: rotate(0.5turn);
 }
+
+.hand {
+  font-size: 1.25rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
