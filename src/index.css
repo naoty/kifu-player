@@ -1,21 +1,26 @@
 @import 'the-new-css-reset/css/reset.css';
 
 main {
-  display: grid;
-  grid-template-columns: 1fr 75% 1fr;
-  grid-template-rows: 4rem minmax(0, auto) minmax(0, auto);
+  width: 75%;
+  margin: 4rem auto 4rem;
 }
 
-.header {
-  grid-column-start: 2;
-  grid-row-start: 2;
+section {
+  margin-bottom: 2rem;
+}
+
+h1 {
   margin-bottom: 2rem;
   font-size: 2rem;
   font-weight: bold;
 }
 
-.content {
-  grid-column-start: 2;
-  grid-row-start: 3;
-  text-align: center;
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 1rem;
 }
