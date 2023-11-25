@@ -5,14 +5,13 @@ import Hand from "./hand";
 import { parseSFENPosition } from "../parse-sfen";
 import { Color } from "../piece";
 
-const initialPositionInSFEN = '4k4/9/4G4/9/9/9/9/9/9 b Gg2 1'
-
-export default function KifuPlayer() {
+export default function KifuPlayer({ sfen }: { sfen: string }) {
   // TODO: ナビゲーションボタンから更新する
   const [positionNumber, _] = useState(1)
 
+  // TODO: 棋譜全体をSFENから生成する
   const positions = [
-    parseSFENPosition(initialPositionInSFEN),
+    parseSFENPosition(sfen),
   ]
 
   return (

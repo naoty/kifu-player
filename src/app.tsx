@@ -5,7 +5,7 @@ export default function App() {
     <>
       <h1 className="header">将棋盤コンポーネント実験室</h1>
       <section className="content">
-        <KifuPlayer />
+        <KifuPlayer sfen='4k4/9/4G4/9/9/9/9/9/9 b Gg2 1' />
       </section>
     </>
   )
