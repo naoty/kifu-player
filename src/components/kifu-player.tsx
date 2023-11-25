@@ -16,9 +16,20 @@ export default function KifuPlayer({ sfen }: { sfen: string }) {
 
   return (
     <div className={`${classNames.kifu_player}`}>
-      <Hand pieces={positions[positionNumber - 1].whiteHand} color={Color.White} />
-      <Board pieces={positions[positionNumber - 1].board} />
-      <Hand pieces={positions[positionNumber - 1].blackHand} color={Color.Black} />
+      <Hand
+        pieces={positions[positionNumber - 1].whiteHand}
+        color={Color.White}
+        className={`${classNames.white_hand}`}
+      />
+      <Board
+        pieces={positions[positionNumber - 1].board}
+        className={`${classNames.board}`}
+      />
+      <Hand
+        pieces={positions[positionNumber - 1].blackHand}
+        color={Color.Black}
+        className={`${classNames.black_hand}`}
+      />
     </div>
   )
 }

@@ -1,5 +1,18 @@
 .kifu_player {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  display: grid;
+  /* square * 9 + row-number */
+  grid-template-columns: 3rem calc(3rem * 9 + 1rem + 0.5rem) 3rem;
+  grid-template-rows: minmax(0, auto) 3rem;
+}
+
+.white_hand {
+  grid-column-start: 1;
+}
+
+.board {
+  grid-column-start: 2;
+}
+
+.black_hand {
+  grid-column-start: 3;
 }

@@ -1,14 +1,13 @@
 .hand {
   display: flex;
-  width: 3rem;
   margin-top: 1.5rem;
   text-align: center;
 }
 
-.black_hand {
-  flex-direction: column-reverse;
-}
-
 .white_hand {
   flex-direction: column;
+}
+
+.black_hand {
+  flex-direction: column-reverse;
 }

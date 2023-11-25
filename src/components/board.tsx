@@ -6,8 +6,14 @@ import PieceComponent from './piece';
 import Piece from '../piece';
 import { Nullable } from '../nullable';
 import { numberToKanji } from '../kanji-number';
+import clsx from 'clsx';
 
-export default function Board({ pieces }: { pieces: Nullable<Piece>[][] }) {
+type Props = {
+  pieces: Nullable<Piece>[][],
+  className?: string,
+}
+
+export default function Board({ pieces, className }: Props) {
   const squares = []
 
   const columnNumberRow = []
@@ -32,7 +38,7 @@ export default function Board({ pieces }: { pieces: Nullable<Piece>[][] }) {
   }
 
   return (
-    <table className={`${classNames.board}`}>
+    <table className={clsx(className, classNames.board)}>
       <tbody>
         {...squares}
       </tbody>
