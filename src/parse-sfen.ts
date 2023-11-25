@@ -3,9 +3,9 @@ import Piece, { Color, Type } from "./piece";
 import type { Nullable } from "./nullable";
 
 export function parseSFENPosition(sfen: string): Position {
-  const board = []
-
   const tokens = sfen.split(' ')
+  
+  const board = []
   const sfenPosition = tokens[0]
   const sfenRows = sfenPosition.split('/')
   for (const sfenRow of sfenRows) {
@@ -31,7 +31,38 @@ export function parseSFENPosition(sfen: string): Position {
     board.push(row)
   }
 
-  return new Position(board, [], [])
+  const blackHand: Piece[] = []
+  const whiteHand: Piece[] = []
+  const sfenHands = tokens[2]
+  let lastHandPiece = null
+  for (let i = 0; i < sfenHands.length; i++) {
+    const char = sfenHands[i]
+
+    if (char === '-') {
+      break
+    }
+
+    const piece = pieceFromSFENLetter(char)
+    if (piece) {
+      lastHandPiece = piece
+      if (piece.color === Color.Black) {
+        blackHand.push(piece)
+      } else if (piece.color === Color.White) {
+        whiteHand.push(piece)
+      }
+    }
+
+    if (char.match(/^\d$/)) {
+      const handNumber = Number(char)
+      if (lastHandPiece?.color === Color.Black) {
+        blackHand.push(...Array(handNumber - 1).fill(lastHandPiece))
+      } else if (lastHandPiece?.color === Color.White) {
+        whiteHand.push(...Array(handNumber - 1).fill(lastHandPiece))
+      }
+    }
+  }
+
+  return new Position(board, blackHand, whiteHand)
 }
 
 function pieceFromSFENLetter(letter: string): Piece | null {
