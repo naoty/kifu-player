@@ -18,11 +18,22 @@ export default function KifuPlayer() {
   // TODO: SFENから持ち駒を生成する
   const whitePiecesInHand = [
     new Piece(Type.Pawn, Color.White),
+    new Piece(Type.Lance, Color.White),
+    new Piece(Type.Knight, Color.White),
+    new Piece(Type.SilverGeneral, Color.White),
+    new Piece(Type.GoldGeneral, Color.White),
+    new Piece(Type.Bishop, Color.White),
+    new Piece(Type.Rook, Color.White),
   ]
 
   const blackPiecesInHand = [
     new Piece(Type.Pawn, Color.Black),
     new Piece(Type.Lance, Color.Black),
+    new Piece(Type.Knight, Color.Black),
+    new Piece(Type.SilverGeneral, Color.Black),
+    new Piece(Type.GoldGeneral, Color.Black),
+    new Piece(Type.Bishop, Color.Black),
+    new Piece(Type.Rook, Color.Black),
   ]
 
   return (

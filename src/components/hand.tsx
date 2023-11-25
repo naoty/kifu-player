@@ -4,7 +4,8 @@ import Piece, { Color } from "../piece";
 import clsx from "clsx";
 
 export default function Hand({ pieces, color }: { pieces: Piece[], color: Color }) {
-  const pieceComponents = pieces.map((piece, i) => (
+  const sortedPieces = [...pieces].sort((a, b) => b.orderInHand - a.orderInHand)
+  const pieceComponents = sortedPieces.map((piece, i) => (
     <PieceComponent key={i} piece={piece} />
   ))
 

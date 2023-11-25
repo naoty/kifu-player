@@ -8,6 +8,27 @@ export default class Piece {
     this.color = color
   }
 
+  get orderInHand(): number {
+    switch (this.type) {
+      case Type.King:
+        return 0
+      case Type.Rook:
+        return 1
+      case Type.Bishop:
+        return 2
+      case Type.GoldGeneral:
+        return 3
+      case Type.SilverGeneral:
+        return 4
+      case Type.Knight:
+        return 5
+      case Type.Lance:
+        return 6
+      case Type.Pawn:
+        return 7
+    }
+  }
+
   toString(): string {
     if (this.type === Type.King) {
       return this.color === Color.Black ? '王' : '玉'
