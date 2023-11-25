@@ -1,8 +1,9 @@
+import Position from "./position";
 import Piece, { Color, Type } from "./piece";
-import { Nullable, Position } from "./position";
+import type { Nullable } from "./nullable";
 
 export function parseSFENPosition(sfen: string): Position {
-  const position = []
+  const board = []
 
   const tokens = sfen.split(' ')
   const sfenPosition = tokens[0]
@@ -27,10 +28,10 @@ export function parseSFENPosition(sfen: string): Position {
       }
     }
 
-    position.push(row)
+    board.push(row)
   }
 
-  return position
+  return new Position(board, [], [])
 }
 
 function pieceFromSFENLetter(letter: string): Piece | null {

@@ -3,10 +3,11 @@ import Square from './square';
 import RowNumber from './row-number';
 import ColumnNumber from './column-number';
 import PieceComponent from './piece';
-import type { Position } from '../position';
+import Piece from '../piece';
+import { Nullable } from '../nullable';
 import { numberToKanji } from '../kanji-number';
 
-export default function Board({ position }: { position: Position }) {
+export default function Board({ pieces }: { pieces: Nullable<Piece>[][] }) {
   const squares = []
 
   const columnNumberRow = []
@@ -19,7 +20,7 @@ export default function Board({ position }: { position: Position }) {
     const squareRow = []
     for (let column = 0; column <= 8; column++) {
       const key = (9 - column) * 10 + (row + 1)
-      const piece = position[row][column]
+      const piece = pieces[row][column]
       if (piece) {
         squareRow.push(<Square key={key}><PieceComponent piece={piece} /></Square>)
       } else {

@@ -1,4 +1,14 @@
 import Piece from "./piece";
+import type { Nullable } from "./nullable";
 
-export type Nullable<T> = T | null
-export type Position = Nullable<Piece>[][]
+export default class Position {
+  board: Nullable<Piece>[][]
+  blackHand: Piece[]
+  whiteHand: Piece[]
+
+  constructor(board: Nullable<Piece>[][], blackHand: Piece[], whiteHand: Piece[]) {
+    this.board = board
+    this.blackHand = blackHand
+    this.whiteHand = whiteHand
+  }
+}

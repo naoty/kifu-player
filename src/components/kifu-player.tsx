@@ -39,7 +39,7 @@ export default function KifuPlayer() {
   return (
     <div className={`${classNames.kifu_player}`}>
       <Hand pieces={whitePiecesInHand} color={Color.White} />
-      <Board position={positions[positionNumber - 1]} />
+      <Board pieces={positions[positionNumber - 1].board} />
       <Hand pieces={blackPiecesInHand} color={Color.Black} />
     </div>
   )
