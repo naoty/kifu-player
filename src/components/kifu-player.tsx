@@ -2,6 +2,7 @@ import { useState } from "react";
 import classNames from "./kifu-player.module.css";
 import Board from "./board";
 import Hand from "./hand";
+import NavigationButton from "./navigation-button";
 import { parseSFENPosition } from "../parse-sfen";
 import { Color } from "../piece";
 
@@ -30,6 +31,9 @@ export default function KifuPlayer({ sfen }: { sfen: string }) {
         color={Color.Black}
         className={`${classNames.black_hand}`}
       />
+      <nav className={`${classNames.navigation}`}>
+        <NavigationButton />
+      </nav>
     </div>
   )
 }

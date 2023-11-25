@@ -2,7 +2,7 @@
   display: grid;
   /* square * 9 + row-number */
   grid-template-columns: 3rem calc(3rem * 9 + 1rem + 0.5rem) 3rem;
-  grid-template-rows: minmax(0, auto) 3rem;
+  grid-template-rows: minmax(0, auto) 5rem;
 }
 
 .white_hand {
@@ -15,4 +15,13 @@
 
 .black_hand {
   grid-column-start: 3;
+}
+
+.navigation {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.5rem; /* row-numberの分を除外してboardに合わせる */
 }

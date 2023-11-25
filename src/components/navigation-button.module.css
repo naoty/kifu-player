@@ -1,0 +1,30 @@
+.container {
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  overflow: hidden; /* 背景色が角丸をはみ出すのを防ぐ */
+}
+
+.button {
+  width: 4rem;
+  padding: 4px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: rgba(100, 116, 139, 0.04);
+}
+
+.button:active {
+  background-color: rgba(100, 116, 139, 0.10);
+}
+
+.back {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+  vertical-align: middle;
+}
