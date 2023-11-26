@@ -15,50 +15,73 @@ export default class Position {
   }
 
   applyMove(move: Move): Position {
-    const newBoard = [...this.board]
-    const newBlackHand = [...this.blackHand]
-    const newWhiteHand = [...this.whiteHand]
+    const newPosition = this.deepCopy()
 
-    const sourcePiece = newBoard[move.source[1] - 1][9 - move.source[0]]
-    const destinationPiece = newBoard[move.destination[1] - 1][9 - move.destination[0]]
+    const sourcePiece = newPosition.board[move.source[1] - 1][9 - move.source[0]]
+    const destinationPiece = newPosition.board[move.destination[1] - 1][9 - move.destination[0]]
 
     if (destinationPiece?.color === Color.Black) {
       destinationPiece.color = Color.White
-      newWhiteHand.push(destinationPiece)
+      newPosition.whiteHand.push(destinationPiece)
     } else if (destinationPiece?.color === Color.White) {
       destinationPiece.color = Color.Black
-      newBlackHand.push(destinationPiece)
+      newPosition.blackHand.push(destinationPiece)
     }
 
     if (sourcePiece && move.promoted) {
       sourcePiece.promoted = true
     }
 
-    newBoard[move.source[1] - 1][9 - move.source[0]] = null
-    newBoard[move.destination[1] - 1][9 - move.destination[0]] = sourcePiece
+    newPosition.board[move.source[1] - 1][9 - move.source[0]] = null
+    newPosition.board[move.destination[1] - 1][9 - move.destination[0]] = sourcePiece
 
-    return new Position(newBoard, newBlackHand, newWhiteHand)
+    return newPosition
   }
 
   applyDrop(drop: Drop): Position {
-    const newBoard = [...this.board]
-    const newBlackHand = [...this.blackHand]
-    const newWhiteHand = [...this.whiteHand]
+    const newPosition = this.deepCopy()
 
-    newBoard[drop.destination[1] - 1][9 - drop.destination[0]] = new Piece(drop.type, drop.color)
+    newPosition.board[drop.destination[1] - 1][9 - drop.destination[0]] = new Piece(drop.type, drop.color)
 
     if (drop.color === Color.Black) {
-      const index = newBlackHand.findIndex((piece) => piece.type === drop.type)
+      const index = newPosition.blackHand.findIndex((piece) => piece.type === drop.type)
       if (index > -1) {
-        newBlackHand.splice(index, 1)
+        newPosition.blackHand.splice(index, 1)
       }
     } else if (drop.color === Color.White) {
-      const index = newWhiteHand.findIndex((piece) => piece.type === drop.type)
+      const index = newPosition.whiteHand.findIndex((piece) => piece.type === drop.type)
       if (index > -1) {
-        newWhiteHand.splice(index, 1)
+        newPosition.whiteHand.splice(index, 1)
       }
     }
 
-    return new Position(newBoard, newBlackHand, newWhiteHand)
+    return newPosition
+  }
+
+  deepCopy(): Position {
+    const board: Nullable<Piece>[][] = []
+    for (const row of this.board) {
+      const pieces: Nullable<Piece>[] = []
+      for (const piece of row) {
+        if (piece) {
+          pieces.push(piece.deepCopy())
+        } else {
+          pieces.push(null)
+        }
+      }
+      board.push(pieces)
+    }
+
+    const blackHand: Piece[] = []
+    for (const piece of this.blackHand) {
+      blackHand.push(piece.deepCopy())
+    }
+
+    const whiteHand: Piece[] = []
+    for (const piece of this.whiteHand) {
+      whiteHand.push(piece.deepCopy())
+    }
+
+    return new Position(board, blackHand, whiteHand)
   }
 }

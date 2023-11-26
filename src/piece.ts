@@ -51,6 +51,10 @@ export default class Piece {
       return ''
     }
   }
+
+  deepCopy(): Piece {
+    return new Piece(this.type, this.color, { promoted: this.promoted })
+  }
 }
 
 export enum Type {
