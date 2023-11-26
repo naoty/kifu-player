@@ -28,11 +28,13 @@ export function parseSFEN(sfen: string): Position[] {
   }
 
   for (const moveToken of tokens.slice(movesIndex + 1)) {
+    const currentPosition = positions[positions.length - 1]
+
     // 詰み
     if (moveToken === 'mate') {
       break
     }
-    
+
     // 投了
     if (moveToken === 'resign') {
       break
@@ -40,14 +42,14 @@ export function parseSFEN(sfen: string): Position[] {
 
     // 持ち駒
     if (moveToken[1] === '*') {
-      const drop = parseDrop(moveToken)
-      const nextPosition = positions[positions.length - 1].applyDrop(drop)
+      const drop = parseDrop(moveToken, currentPosition.nextTurn)
+      const nextPosition = currentPosition.applyDrop(drop)
       positions.push(nextPosition)
       continue
     }
 
     const move = parseMove(moveToken)
-    const nextPosition = positions[positions.length - 1].applyMove(move)
+    const nextPosition = currentPosition.applyMove(move)
     positions.push(nextPosition)
   }
 
@@ -83,6 +85,8 @@ export function parsePosition(sfen: string): Position {
     board.push(row)
   }
 
+  const nextTurn = tokens[1] === 'w' ? Color.White : Color.Black
+
   const blackHand: Piece[] = []
   const whiteHand: Piece[] = []
   const sfenHands = tokens[2]
@@ -114,7 +118,7 @@ export function parsePosition(sfen: string): Position {
     }
   }
 
-  return new Position(board, blackHand, whiteHand)
+  return new Position(board, blackHand, whiteHand, nextTurn)
 }
 
 export function parseMove(sfen: string): Move {
@@ -130,11 +134,11 @@ export function parseMove(sfen: string): Move {
   return move
 }
 
-export function parseDrop(sfen: string): Drop {
+export function parseDrop(sfen: string, turn: Color): Drop {
   const piece = parsePiece(sfen[0])
   const destination = parseCoordinate(sfen.substring(2, 4))
 
-  return new Drop(piece!.type, piece!.color, destination)
+  return new Drop(piece!.type, turn, destination)
 }
 
 function parsePiece(sfen: string): Piece | null {
@@ -217,5 +221,6 @@ const evenInitialPosition: Position = new Position(
     [new Piece(Type.Lance, Color.Black), new Piece(Type.Knight, Color.Black), new Piece(Type.SilverGeneral, Color.Black), new Piece(Type.GoldGeneral, Color.Black), new Piece(Type.King, Color.Black), new Piece(Type.GoldGeneral, Color.Black), new Piece(Type.SilverGeneral, Color.Black), new Piece(Type.Knight, Color.Black), new Piece(Type.Lance, Color.Black)],
   ],
   [],
-  []
+  [],
+  Color.Black
 )
