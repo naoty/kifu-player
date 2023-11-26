@@ -8,6 +8,10 @@
   },
   "license": "MIT",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/kifu-player.umd.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
