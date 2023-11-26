@@ -70,6 +70,41 @@ describe('PositionとMoveから新しいPositionを生成する', () => {
     ])
   })
 
+  test('相手の成駒を取って持ち駒に加える', () => {
+    const position = new Position(
+      [
+        Array(9).fill(null),
+        [...Array(4).fill(null), new Piece(Type.GoldGeneral, Color.White), ...Array(4).fill(null)],
+        [...Array(4).fill(null), new Piece(Type.Pawn, Color.Black, { promoted: true }), ...Array(4).fill(null)],
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+      ],
+      [],
+      [],
+      Color.White
+    )
+    const move = new Move([5, 2], [5, 3])
+    const newPosition = position.applyMove(move)
+    expect(newPosition.board).toStrictEqual([
+      Array(9).fill(null),
+      Array(9).fill(null),
+      [...Array(4).fill(null), new Piece(Type.GoldGeneral, Color.White), ...Array(4).fill(null)],
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+    ])
+    expect(newPosition.whiteHand).toStrictEqual([
+      new Piece(Type.Pawn, Color.White, { promoted: false }),
+    ])
+  })
+
   test('移動した駒を成る', () => {
     const position = new Position(
       [

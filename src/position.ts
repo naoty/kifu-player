@@ -24,9 +24,11 @@ export default class Position {
 
     if (destinationPiece?.color === Color.Black) {
       destinationPiece.color = Color.White
+      destinationPiece.promoted = false
       newPosition.whiteHand.push(destinationPiece)
     } else if (destinationPiece?.color === Color.White) {
       destinationPiece.color = Color.Black
+      destinationPiece.promoted = false
       newPosition.blackHand.push(destinationPiece)
     }
 
