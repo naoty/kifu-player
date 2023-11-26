@@ -28,6 +28,11 @@ export function parseSFEN(sfen: string): Position[] {
   }
 
   for (const moveToken of tokens.slice(movesIndex + 1)) {
+    // 詰み
+    if (moveToken === 'mate') {
+      break
+    }
+    
     // 投了
     if (moveToken === 'resign') {
       break
