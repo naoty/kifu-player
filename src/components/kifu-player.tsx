@@ -7,10 +7,20 @@ import { parseSFEN } from "../parse-sfen";
 import { Color } from "../piece";
 
 export default function KifuPlayer({ sfen }: { sfen: string }) {
-  // TODO: ナビゲーションボタンから更新する
-  const [positionNumber, _] = useState(1)
-
   const positions = parseSFEN(sfen)
+  const [positionNumber, setPositionNumber] = useState(1)
+
+  const onBackButtonClick = () => {
+    if (positionNumber > 1) {
+      setPositionNumber(positionNumber - 1)
+    }
+  }
+
+  const onNextButtonClick = () => {
+    if (positionNumber < positions.length) {
+      setPositionNumber(positionNumber + 1)
+    }
+  }
 
   return (
     <div className={`${classNames.kifu_player}`}>
@@ -29,7 +39,10 @@ export default function KifuPlayer({ sfen }: { sfen: string }) {
         className={`${classNames.black_hand}`}
       />
       <nav className={`${classNames.navigation}`}>
-        <NavigationButton />
+        <NavigationButton
+          onBackButtonClick={onBackButtonClick}
+          onNextButtonClick={onNextButtonClick}
+        />
       </nav>
     </div>
   )
