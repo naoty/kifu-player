@@ -12,6 +12,7 @@
     "dist"
   ],
   "main": "./dist/kifu-player.umd.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -36,6 +37,7 @@
     "the-new-css-reset": "^1.11.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.6.3",
     "vitest": "^0.34.6"
   }
 }
