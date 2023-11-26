@@ -11,7 +11,7 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/kifu-player.umd.js",
+  "main": "./dist/kifu-player.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
