@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import Piece, { Color, Type } from "./piece";
 import Move from "./move";
 import Position from "./position";
+import Drop from "./drop";
 
 describe('PositionとMoveから新しいPositionを生成する', () => {
   test('何もないマスに移動する', () => {
@@ -98,5 +99,41 @@ describe('PositionとMoveから新しいPositionを生成する', () => {
       Array(9).fill(null),
       Array(9).fill(null),
     ])
+  })
+})
+
+describe('PositionとDropから新しいPositionを生成する', () => {
+  test('持ち駒から盤に駒が移動する', () => {
+    const position = new Position(
+      [
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+        Array(9).fill(null),
+      ],
+      [
+        new Piece(Type.Pawn, Color.Black)
+      ],
+      []
+    )
+    const drop = new Drop(Type.Pawn, Color.Black, [5, 5])
+    const newPosition = position.applyDrop(drop)
+    expect(newPosition.board).toStrictEqual([
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+      [...Array(4).fill(null), new Piece(Type.Pawn, Color.Black), ...Array(4).fill(null)],
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+      Array(9).fill(null),
+    ])
+    expect(newPosition.blackHand).toStrictEqual([])
   })
 })
