@@ -1,4 +1,4 @@
-import KifuPlayer from "./components/kifu-player";
+import { KifuPlayer } from './lib/main';
 
 export default function App() {
   return (
