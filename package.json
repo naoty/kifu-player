@@ -1,7 +1,12 @@
 {
-  "name": "shogi-player",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@naoty/kifu-player",
+  "version": "0.1.0",
+  "author": {
+    "name": "Naoto Kaneko",
+    "email": "naoty.k@gmail.com",
+    "url": "https://naoty.dev"
+  },
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,8 +18,7 @@
   "dependencies": {
     "clsx": "^2.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "the-new-css-reset": "^1.11.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -25,6 +29,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "the-new-css-reset": "^1.11.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vitest": "^0.34.6"
