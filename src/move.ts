@@ -5,9 +5,9 @@ export default class Move {
   destination: Coordinate
   promoted: boolean
 
-  constructor(source: Coordinate, destination: Coordinate, promoted = false) {
+  constructor(source: Coordinate, destination: Coordinate, { promoted }: { promoted?: boolean } = {}) {
     this.source = source
     this.destination = destination
-    this.promoted = promoted
+    this.promoted = promoted ?? false
   }
 }

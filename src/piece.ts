@@ -1,11 +1,12 @@
 export default class Piece {
   type: Type
   color: Color
-  promoted: boolean = false
+  promoted: boolean
 
-  constructor(type: Type, color: Color) {
+  constructor(type: Type, color: Color, { promoted }: { promoted?: boolean } = {}) {
     this.type = type
     this.color = color
+    this.promoted = promoted ?? false
   }
 
   get orderInHand(): number {
