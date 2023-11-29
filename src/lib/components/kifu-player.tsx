@@ -24,7 +24,7 @@ export default function KifuPlayer({ sfen, className }: { sfen: string, classNam
   }
 
   return (
-    <div className={clsx(classNames.kifu_player, className)}>
+    <div className={clsx('kifu-player', classNames.kifu_player, className)}>
       <Hand
         pieces={positions[positionNumber - 1].whiteHand}
         color={Color.White}
