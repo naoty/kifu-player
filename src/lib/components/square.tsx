@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import clsx from "clsx";
 import classNames from './square.module.css'
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 
 export default function Square({ children }: Props) {
   return (
-    <td className={`${classNames.square}`}>
+    <td className={clsx('square', classNames.square)}>
       {children}
     </td>
   )

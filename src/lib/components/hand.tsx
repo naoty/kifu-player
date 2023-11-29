@@ -17,6 +17,7 @@ export default function Hand({ pieces, color, className }: Props) {
 
   return (
     <div className={clsx(
+      'hand',
       className,
       classNames.hand,
       color === Color.Black && classNames.black_hand,

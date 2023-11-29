@@ -6,6 +6,7 @@ export default function Piece({ piece, hand = false }: { piece: PieceData, hand?
   return (
     <span
       className={clsx(
+        'piece',
         classNames.piece,
         piece.color == Color.White && classNames.white,
         hand && classNames.hand,

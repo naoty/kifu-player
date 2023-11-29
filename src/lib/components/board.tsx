@@ -38,7 +38,7 @@ export default function Board({ pieces, className }: Props) {
   }
 
   return (
-    <table className={clsx(className, classNames.board)}>
+    <table className={clsx('board', className, classNames.board)}>
       <tbody>
         {...squares}
       </tbody>
