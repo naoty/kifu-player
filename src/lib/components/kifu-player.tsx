@@ -1,4 +1,5 @@
 import { useState } from "react";
+import clsx from "clsx";
 import classNames from "./kifu-player.module.css";
 import Board from "./board";
 import Hand from "./hand";
@@ -6,7 +7,7 @@ import NavigationButton from "./navigation-button";
 import { parseSFEN } from "../parse-sfen";
 import { Color } from "../piece";
 
-export default function KifuPlayer({ sfen }: { sfen: string }) {
+export default function KifuPlayer({ sfen, className }: { sfen: string, className?: string }) {
   const positions = parseSFEN(sfen)
   const [positionNumber, setPositionNumber] = useState(1)
 
@@ -23,7 +24,7 @@ export default function KifuPlayer({ sfen }: { sfen: string }) {
   }
 
   return (
-    <div className={`${classNames.kifu_player}`}>
+    <div className={clsx(classNames.kifu_player, className)}>
       <Hand
         pieces={positions[positionNumber - 1].whiteHand}
         color={Color.White}
