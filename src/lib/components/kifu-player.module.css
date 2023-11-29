@@ -2,7 +2,7 @@
   display: grid;
   /* square * 9 + row-number */
   grid-template-columns: 1fr 3rem calc(3rem * 9 + 1rem + 0.5rem) 3rem 1fr;
-  grid-template-rows: minmax(0, auto) 5rem;
+  grid-template-rows: minmax(0, auto) minmax(0, auto);
 }
 
 .white_hand {
@@ -23,5 +23,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1rem;
   margin-right: 1.5rem; /* row-numberの分を除外してboardに合わせる */
 }
