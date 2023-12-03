@@ -1,6 +1,6 @@
 import { useState } from "react";
 import clsx from "clsx";
-import classNames from "./sfen-player.module.css";
+import classNames from "./kifu-player.module.css";
 import Board from "./board";
 import Hand from "./hand";
 import NavigationButton from "./navigation-button";

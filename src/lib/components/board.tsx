@@ -11,7 +11,7 @@ import { numberToKanji } from '../kanji-number';
 
 type Props = {
   pieces: Nullable<Piece>[][],
-  destination: Coordinate | null,
+  destination?: Coordinate | null,
   className?: string,
 }
 
@@ -29,7 +29,7 @@ export default function Board({ pieces, destination, className }: Props) {
     for (let column = 0; column <= 8; column++) {
       const coordinate: Coordinate = [9 - column, row + 1]
       const key = coordinate[0] * 10 + coordinate[1]
-      const piece = pieces[row][column]
+      const piece = pieces.at(row)?.at(column)
       if (piece) {
         squareRow.push(<Square key={key} isDestination={equals(coordinate, destination)}><PieceComponent piece={piece} /></Square>)
       } else {

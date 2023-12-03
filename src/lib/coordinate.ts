@@ -1,7 +1,7 @@
 export type Coordinate = [number, number]
 
-export function equals(a: Coordinate | null, b: Coordinate | null): boolean {
-  if (a === null || b === null) {
+export function equals(a: Coordinate | undefined | null, b: Coordinate | undefined | null): boolean {
+  if (a == null || b == null) {
     return false
   }
 

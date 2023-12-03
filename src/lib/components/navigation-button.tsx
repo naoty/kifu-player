@@ -2,8 +2,8 @@ import clsx from "clsx";
 import classNames from "./navigation-button.module.css";
 
 type Props = {
-  onBackButtonClick: () => void,
-  onNextButtonClick: () => void,
+  onBackButtonClick?: () => void,
+  onNextButtonClick?: () => void,
   className?: string,
 }
 
