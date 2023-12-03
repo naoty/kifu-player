@@ -1,3 +1,4 @@
+import ErrorBoundary from "./error-boundary"
 import SFENPlayer from "./sfen-player"
 
 type Props = {
@@ -6,5 +7,9 @@ type Props = {
 }
 
 export default function KifuPlayer({ sfen, className }: Props) {
-  return <SFENPlayer sfen={sfen} className={className} />
+  return (
+    <ErrorBoundary fallback={<h1>error</h1>}>
+      <SFENPlayer sfen={sfen} className={className} />
+    </ErrorBoundary>
+  )
 }
