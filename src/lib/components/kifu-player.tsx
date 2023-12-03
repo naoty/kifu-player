@@ -10,6 +10,7 @@ import { Color } from "../piece";
 export default function KifuPlayer({ sfen, className }: { sfen: string, className?: string }) {
   const positions = parseSFEN(sfen)
   const [positionNumber, setPositionNumber] = useState(1)
+  const position = positions[positionNumber - 1]
 
   const onBackButtonClick = () => {
     if (positionNumber > 1) {
@@ -26,16 +27,17 @@ export default function KifuPlayer({ sfen, className }: { sfen: string, classNam
   return (
     <div className={clsx('kifu-player', classNames.kifu_player, className)}>
       <Hand
-        pieces={positions[positionNumber - 1].whiteHand}
+        pieces={position.whiteHand}
         color={Color.White}
         className={`${classNames.white_hand}`}
       />
       <Board
         pieces={positions[positionNumber - 1].board}
+        destination={position.destination}
         className={`${classNames.board}`}
       />
       <Hand
-        pieces={positions[positionNumber - 1].blackHand}
+        pieces={position.blackHand}
         color={Color.Black}
         className={`${classNames.black_hand}`}
       />

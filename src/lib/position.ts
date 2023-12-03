@@ -2,18 +2,21 @@ import Piece, { Color } from "./piece";
 import Move from "./move";
 import Drop from "./drop";
 import type { Nullable } from "./nullable";
+import { Coordinate } from "./coordinate";
 
 export default class Position {
   board: Nullable<Piece>[][]
   blackHand: Piece[]
   whiteHand: Piece[]
   nextTurn: Color
+  destination: Coordinate | null
 
-  constructor(board: Nullable<Piece>[][], blackHand: Piece[], whiteHand: Piece[], nextTurn = Color.Black) {
+  constructor(board: Nullable<Piece>[][], blackHand: Piece[], whiteHand: Piece[], nextTurn = Color.Black, destination = null) {
     this.board = board
     this.blackHand = blackHand
     this.whiteHand = whiteHand
     this.nextTurn = nextTurn
+    this.destination = destination
   }
 
   applyMove(move: Move): Position {
@@ -40,6 +43,7 @@ export default class Position {
     newPosition.board[move.destination[1] - 1][9 - move.destination[0]] = sourcePiece
 
     newPosition.nextTurn = this.nextTurn === Color.Black ? Color.White : Color.Black
+    newPosition.destination = move.destination
 
     return newPosition
   }
@@ -62,6 +66,7 @@ export default class Position {
     }
 
     newPosition.nextTurn = this.nextTurn === Color.Black ? Color.White : Color.Black
+    newPosition.destination = drop.destination
 
     return newPosition
   }

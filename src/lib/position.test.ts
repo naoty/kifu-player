@@ -34,6 +34,7 @@ describe('PositionとMoveから新しいPositionを生成する', () => {
       [new Piece(Type.Pawn, Color.Black), ...Array(8).fill(null)],
       Array(9).fill(null),
     ])
+    expect(newPosition.destination).toStrictEqual([9, 8])
   })
 
   test('相手の駒を取って持ち駒に加える', () => {
@@ -68,6 +69,7 @@ describe('PositionとMoveから新しいPositionを生成する', () => {
     expect(newPosition.blackHand).toStrictEqual([
       new Piece(Type.SilverGeneral, Color.Black),
     ])
+    expect(newPosition.destination).toStrictEqual([4, 4])
   })
 
   test('相手の成駒を取って持ち駒に加える', () => {
@@ -103,6 +105,7 @@ describe('PositionとMoveから新しいPositionを生成する', () => {
     expect(newPosition.whiteHand).toStrictEqual([
       new Piece(Type.Pawn, Color.White, { promoted: false }),
     ])
+    expect(newPosition.destination).toStrictEqual([5, 3])
   })
 
   test('移動した駒を成る', () => {
@@ -134,6 +137,7 @@ describe('PositionとMoveから新しいPositionを生成する', () => {
       Array(9).fill(null),
       Array(9).fill(null),
     ])
+    expect(newPosition.destination).toStrictEqual([8, 2])
   })
 })
 
@@ -170,5 +174,6 @@ describe('PositionとDropから新しいPositionを生成する', () => {
       Array(9).fill(null),
     ])
     expect(newPosition.blackHand).toStrictEqual([])
+    expect(newPosition.destination).toStrictEqual([5, 5])
   })
 })

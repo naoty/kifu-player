@@ -3,12 +3,13 @@ import clsx from "clsx";
 import classNames from './square.module.css'
 
 type Props = {
+  isDestination: boolean,
   children?: ReactNode,
 }
 
-export default function Square({ children }: Props) {
+export default function Square({ isDestination, children }: Props) {
   return (
-    <td className={clsx('square', classNames.square)}>
+    <td className={clsx('square', classNames.square, isDestination && classNames.destination)}>
       {children}
     </td>
   )
