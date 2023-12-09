@@ -10,7 +10,6 @@
 }
 
 .hand {
-  font-size: 1.25rem;
+  font-size: max(0.8rem, 0.8rem + 1vw);
   font-weight: normal;
-  line-height: 1.5;
 }

@@ -1,7 +1,7 @@
 .row_number {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   padding-left: 0.5rem;
   font-size: max(0.5rem, 0.5rem + 1vw);
 }
