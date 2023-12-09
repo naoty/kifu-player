@@ -1,7 +1,7 @@
 .kifu_player {
   display: grid;
   justify-content: center;
-  grid-template-columns: 10% 50% 10%;
+  grid-template-columns: 10% 75% 10%;
   grid-template-rows: max-content max-content;
 }
 

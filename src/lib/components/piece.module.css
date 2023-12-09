@@ -1,7 +1,7 @@
 .piece {
   display: inline-block;
   font-family: serif;
-  font-size: 1.5rem;
+  font-size: max(1rem, 1rem + 1vw);
   font-weight: bold;
 }
 

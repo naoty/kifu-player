@@ -1,3 +1,6 @@
 .column_number {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: max(0.5rem, 0.5rem + 1vw);
 }
