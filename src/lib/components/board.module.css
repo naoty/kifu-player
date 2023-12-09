@@ -1,5 +1,5 @@
 .board {
   display: grid;
-  grid-template-columns: repeat(9, 1fr) 10%;
-  grid-template-rows: 10% repeat(9, 1fr);
+  grid-template-columns: repeat(9, 1fr) 5%;
+  grid-template-rows: 5% repeat(9, 1fr);
 }

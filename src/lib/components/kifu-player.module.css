@@ -2,7 +2,7 @@
   display: grid;
   justify-content: center;
   grid-template-columns: 10% 50% 10%;
-  grid-template-rows: minmax(0, auto) minmax(0, auto);
+  grid-template-rows: max-content max-content;
 }
 
 .white_hand {
