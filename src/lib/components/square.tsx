@@ -9,8 +9,8 @@ type Props = {
 
 export default function Square({ isDestination, children }: Props) {
   return (
-    <td className={clsx('square', classNames.square, isDestination && classNames.destination)}>
+    <div className={clsx('square', classNames.square, isDestination && classNames.destination)}>
       {children}
-    </td>
+    </div>
   )
 }

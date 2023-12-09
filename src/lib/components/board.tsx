@@ -18,33 +18,31 @@ type Props = {
 export default function Board({ pieces, destination, className }: Props) {
   const squares = []
 
-  const columnNumberRow = []
   for (let column = 9; column >= 1; column--) {
-    columnNumberRow.push(<ColumnNumber key={column} value={`${column}`} />)
+    const key = `column-${column}`
+    squares.push(<ColumnNumber key={key} value={`${column}`} />)
   }
-  squares.push(<tr key={0}>{...columnNumberRow}</tr>)
+
+  squares.push(<span></span>)
 
   for (let row = 0; row <= 8; row++) {
-    const squareRow = []
     for (let column = 0; column <= 8; column++) {
       const coordinate: Coordinate = [9 - column, row + 1]
       const key = coordinate[0] * 10 + coordinate[1]
       const piece = pieces.at(row)?.at(column)
       if (piece) {
-        squareRow.push(<Square key={key} isDestination={equals(coordinate, destination)}><PieceComponent piece={piece} /></Square>)
+        squares.push(<Square key={key} isDestination={equals(coordinate, destination)}><PieceComponent piece={piece} /></Square>)
       } else {
-        squareRow.push(<Square key={key} isDestination={equals(coordinate, destination)} />)
+        squares.push(<Square key={key} isDestination={equals(coordinate, destination)} />)
       }
     }
-    squareRow.push(<RowNumber key={row + 1} value={numberToKanji(row + 1)} />)
-    squares.push(<tr key={row + 1}>{...squareRow}</tr>)
+    const key = `row-${row + 1}`
+    squares.push(<RowNumber key={key} value={numberToKanji(row + 1)} />)
   }
 
   return (
-    <table className={clsx('board', className, classNames.board)}>
-      <tbody>
-        {...squares}
-      </tbody>
-    </table>
+    <div className={clsx('board', className, classNames.board)}>
+      {...squares}
+    </div>
   )
 }

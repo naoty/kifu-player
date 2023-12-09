@@ -1,7 +1,7 @@
 .kifu_player {
   display: grid;
   /* square * 9 + row-number */
-  grid-template-columns: 1fr 3rem calc(3rem * 9 + 1rem + 0.5rem) 3rem 1fr;
+  grid-template-columns: 1fr 10% 50% 10% 1fr;
   grid-template-rows: minmax(0, auto) minmax(0, auto);
 }
 

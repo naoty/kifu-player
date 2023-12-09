@@ -1,6 +1,7 @@
 .square {
-  height: 3rem;
-  width: 3rem;
+  aspect-ratio: 3.52 / 3.86; /* 実際のマス目と同じ比率 */
+  margin-left: -1px;
+  margin-bottom: -1px;
   border: 1px solid #000;
   text-align: center;
   vertical-align: middle;
