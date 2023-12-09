@@ -23,7 +23,7 @@ export default function Board({ pieces, destination, className }: Props) {
     squares.push(<ColumnNumber key={key} value={`${column}`} />)
   }
 
-  squares.push(<span></span>)
+  squares.push(<span key={'column-0'}></span>)
 
   for (let row = 0; row <= 8; row++) {
     for (let column = 0; column <= 8; column++) {
