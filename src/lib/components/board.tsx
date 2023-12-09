@@ -31,9 +31,24 @@ export default function Board({ pieces, destination, className }: Props) {
       const key = coordinate[0] * 10 + coordinate[1]
       const piece = pieces.at(row)?.at(column)
       if (piece) {
-        squares.push(<Square key={key} isDestination={equals(coordinate, destination)}><PieceComponent piece={piece} /></Square>)
+        squares.push(
+          <Square
+            key={key}
+            isDestination={equals(coordinate, destination)}
+            isRightEdge={column == 8}
+            isBottomEdge={row == 8}
+          >
+            <PieceComponent piece={piece} />
+          </Square>
+        )
       } else {
-        squares.push(<Square key={key} isDestination={equals(coordinate, destination)} />)
+        squares.push(
+          <Square
+            key={key}
+            isRightEdge={column == 8}
+            isBottomEdge={row == 8}
+          />
+        )
       }
     }
     const key = `row-${row + 1}`
