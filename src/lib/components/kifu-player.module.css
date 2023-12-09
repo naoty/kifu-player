@@ -1,24 +1,24 @@
 .kifu_player {
   display: grid;
-  /* square * 9 + row-number */
-  grid-template-columns: 1fr 10% 50% 10% 1fr;
+  justify-content: center;
+  grid-template-columns: 10% 50% 10%;
   grid-template-rows: minmax(0, auto) minmax(0, auto);
 }
 
 .white_hand {
-  grid-column-start: 2;
+  grid-column-start: 1;
 }
 
 .board {
-  grid-column-start: 3;
+  grid-column-start: 2;
 }
 
 .black_hand {
-  grid-column-start: 4;
+  grid-column-start: 3;
 }
 
 .navigation {
-  grid-column-start: 3;
+  grid-column-start: 2;
   grid-row-start: 2;
   display: flex;
   justify-content: center;
